@@ -13,8 +13,18 @@ function App() {
     if(counter>=20){
       return;
     }
-    setCounter(counter + 1);
-    console.log(counter);
+    // setCounter(counter + 1);
+    // setCounter(counter + 1);
+    // setCounter(counter + 1);
+    // setCounter(counter + 1); // useState send updates in batches and send alltogether 
+    setCounter((prevCouter)=> prevCouter+1);
+    setCounter((prevCouter)=> prevCouter+1);
+    setCounter((prevCouter)=> prevCouter+1);
+    setCounter((prevCouter)=> prevCouter+1);
+  //the prevCounter gives the previous state of the count value......when the 1st setCounter callback function is called and executed then only the next setCounter will execute and not in batches
+
+
+    // console.log(counter);
   }
 
   function removeValue(){
@@ -22,7 +32,7 @@ function App() {
       return;
     }
     setCounter(counter - 1);
-    console.log(counter);
+    // console.log(counter);
   }
   return (
     <>
