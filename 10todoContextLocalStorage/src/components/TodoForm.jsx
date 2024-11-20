@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { useTodo } from '../contexts/index';
+import { useTodo } from '../contexts/TodoContext';
 
 
 function TodoForm() {
@@ -8,9 +8,9 @@ function TodoForm() {
 
     const add = (e) =>{
         e.preventDefault();
-        if(!todo) return;
-        addTodo({...todo, completed: false});
-        setTodo("");
+        if(!todo.trim()) return; //.trim() will ensure that no whitespace or empty string is added in todo
+        addTodo({todo, completed: false}); //this argument is not a todos object it is a string with todo as todomessage(todo in todos object) when the adTodo method is called in app.js it takes a parameter object todo and gives it unique id and spread baaki ka which is here handled by add function
+        setTodo('');
     }
     return (
         <form onSubmit={add} className="flex">
